@@ -26,6 +26,16 @@
   pointer-events: none;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Bricolage Grotesque", "Lexend", "Segoe UI", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+}
+
 .nav {
   position: absolute;
   top: 24px;
@@ -66,7 +76,7 @@
 }
 
 .logo {
-  font-family: "Lexend", "Segoe UI", sans-serif;
+  font-family: "Bricolage Grotesque", "Lexend", "Segoe UI", sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
   color: #fff;
@@ -367,7 +377,8 @@
 .projectCard {
   background: #fff;
   border-radius: 18px;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow: visible;
   display: flex;
   flex-direction: column;
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
@@ -385,26 +396,48 @@
   padding: 0;
 }
 
-.chevronBtn {
-  background: rgba(255,255,255,0.8);
-  border: none;
-  border-radius: 50%;
-  padding: 8px;
-  cursor: pointer;
+.projectImagesRow {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  transition: background 0.2s;
-}
-
-.chevronBtn:hover {
-  background: rgba(255,255,255,1);
+  align-items: center;
+  background: #f8fafc;
+  border-radius: 8px;
 }
 
 .projectImage {
   width: 100%;
   object-fit: cover;
-  /* border-radius: 8px; */
+  background: #e2e8f0;
+}
+
+.chevronBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(247, 247, 247, 0.8);
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.chevronLeft {
+  left: -20px;
+}
+
+.chevronRight {
+  right: -20px;
+}
+
+.chevronBtn:hover {
+  background: rgb(233, 233, 233);
+}
+
+.projectImage {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
   background: #e2e8f0;
 }
 
@@ -471,7 +504,7 @@
 }
 
 .contact {
-  padding: 80px 64px;
+  padding: 80px 64px 160px;
   scroll-margin-top: 80px;
   text-align: center;
 }
@@ -508,6 +541,19 @@
   transform: scale(1.1);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
   background: #4b9fff;
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0.753);
+  color: #0f172a;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.footerText {
+  margin: 0;
+  font-family: "Lexend", "Segoe UI", sans-serif;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 860px) {

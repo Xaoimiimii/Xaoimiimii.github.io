@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { CheckCircle2, Bug, Wrench, Code2, Database, Mail, Github, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Bird, CheckCircle2, Bug, Wrench, Code2, Database, Mail, Github, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './App.module.css';
 import cloudHero from './assets/cloudy_hero.mp4';
 import psmusic1 from './assets/psmusic_1.png';
@@ -10,6 +10,15 @@ import reco1 from './assets/reco_1.png';
 import reco2 from './assets/reco_2.png';
 import airbnb1 from './assets/airbnb_1.png';
 import airbnb2 from './assets/airbnb_2.png';
+import bugs from './assets/bugs.png';
+import transporting from './assets/transporting.png';
+import slice from './assets/slice.png';
+import loupe from './assets/loupe.png';
+import automation from './assets/automation.png';
+import boundary from './assets/boundary.png';
+import workflow from './assets/workflow.png';
+import process from './assets/process.png';
+
 
 const projectFoodlyImages = [foodly1, foodly2];
 const projectRecoImages = [reco1, reco2];
@@ -134,33 +143,40 @@ export default function App() {
       ]
     },
     {
-      title: 'Software Testing',
-      layout: 'three',
+      title: 'Test Analysis & Design',
+      layout: 'two',
       icon: CheckCircle2,
       items: [
         {
-          label: 'Test Analysis & Design',
-          iconName: 'TC'
-        },
-        {
-          label: 'Data-driven Testing',
-          iconName: 'DD'
-        },
-        {
-          label: 'Exploratory Testing',
-          iconName: 'EX'
-        },
-        {
           label: 'Equivalence Partitioning',
-          iconName: 'EP'
+          iconUrl: slice
         },
         {
           label: 'Boundary Value Analysis',
-          iconName: 'BV'
+          iconUrl: boundary
         },
         {
           label: 'State Transition Testing',
-          iconName: 'ST'
+          iconUrl: process
+        },
+        {
+          label: 'User Scenario Testing',
+          iconUrl: workflow
+        }
+      ]
+    },
+    {
+      title: 'Testing Approaches',
+      layout: 'two',
+      icon: Bug,
+      items: [
+        {
+          label: 'Data-driven Testing',
+          iconUrl: automation
+        },
+        {
+          label: 'Exploratory Testing',
+          iconUrl: loupe
         }
       ]
     },
@@ -208,7 +224,7 @@ export default function App() {
           className={`${styles.nav} ${isSticky ? styles.navSticky : ''}`}
           ref={navRef}
         >
-          <div className={styles.logo}>Khanh Nhu</div>
+          <div className={styles.logo}> <Bird size={24} /> Khanh Nhu</div>
           <div className={styles.navLinks}>
             <a href="#home" className={styles.navLink}>Home</a>
             <a href="#about" className={styles.navLink}>About</a>
@@ -273,7 +289,7 @@ export default function App() {
                               referrerPolicy="no-referrer"
                             />
                           ) : (
-                            <span className={styles.skillBadge}>{item.iconName}</span>
+                            <span className={styles.skillBadge}>{item.iconUrl}</span>
                           )}
                           <span>{item.label}</span>
                         </div>
@@ -296,13 +312,24 @@ export default function App() {
           {/* Project 1 */}
           <div className={styles.projectCard}>
             <div className={styles.projectImagesRow}>
-            <button className={styles.chevronBtn} onClick={() => prevImage("foodly", projectFoodlyImages)}>
+              <button
+                className={`${styles.chevronBtn} ${styles.chevronLeft}`}
+                onClick={() => prevImage("foodly", projectFoodlyImages)}
+              >
                 <ChevronLeft />
-            </button>
-            <img src={projectFoodlyImages[currentIndices.foodly]} />
-            <button className={styles.chevronBtn} ChevronRight onClick={() => nextImage("foodly", projectFoodlyImages)}>
+              </button>
+
+              <img
+                className={styles.projectImage}
+                src={projectFoodlyImages[currentIndices.foodly]}
+              />
+
+              <button
+                className={`${styles.chevronBtn} ${styles.chevronRight}`}
+                onClick={() => nextImage("foodly", projectFoodlyImages)}
+              >
                 <ChevronRight />
-            </button>
+              </button>
             </div>
             <div className={styles.projectContent}>
               <h3 className={styles.projectTitle}>Food Delivery System</h3>
@@ -336,16 +363,24 @@ export default function App() {
           {/* Project 2 */}
           <div className={styles.projectCard}>
             <div className={styles.projectImagesRow}>
-              <img 
-                src={psmusic1}
-                alt="Music Streaming 1" 
+              <button
+                className={`${styles.chevronBtn} ${styles.chevronLeft}`}
+                onClick={() => prevImage("music", projectMusicImages)}
+              >
+                <ChevronLeft />
+              </button>
+
+              <img
                 className={styles.projectImage}
+                src={projectMusicImages[currentIndices.music]}
               />
-              <img 
-                src={psmusic2}
-                alt="Music Streaming 2" 
-                className={styles.projectImage}
-              />
+
+              <button
+                className={`${styles.chevronBtn} ${styles.chevronRight}`}
+                onClick={() => nextImage("music", projectMusicImages)}
+              >
+                <ChevronRight />
+              </button>
             </div>
             <div className={styles.projectContent}>
               <h3 className={styles.projectTitle}>Music Streaming with Recommendation</h3>
@@ -375,16 +410,24 @@ export default function App() {
           {/* Project 3 */}
           <div className={styles.projectCard}>
             <div className={styles.projectImagesRow}>
-              <img 
-                src={reco1}
-                alt="Pluggable Recommendation System 1" 
+              <button
+                className={`${styles.chevronBtn} ${styles.chevronLeft}`}
+                onClick={() => prevImage("reco", projectRecoImages)}
+              >
+                <ChevronLeft />
+              </button>
+
+              <img
                 className={styles.projectImage}
+                src={projectRecoImages[currentIndices.reco]}
               />
-              <img 
-                src={reco2}
-                alt="Pluggable Recommendation System 2" 
-                className={styles.projectImage}
-              />
+
+              <button
+                className={`${styles.chevronBtn} ${styles.chevronRight}`}
+                onClick={() => nextImage("reco", projectRecoImages)}
+              >
+                <ChevronRight />
+              </button>
             </div>
             <div className={styles.projectContent}>
               <h3 className={styles.projectTitle}>Pluggable Recommendation System</h3>
@@ -412,16 +455,24 @@ export default function App() {
           {/* Project 4 */}
           <div className={styles.projectCard}>
             <div className={styles.projectImagesRow}>
-              <img 
-                src={airbnb1}
-                alt="Airbnb Clone 1" 
+              <button
+                className={`${styles.chevronBtn} ${styles.chevronLeft}`}
+                onClick={() => prevImage("airbnb", projectAirbnbImages)}
+              >
+                <ChevronLeft />
+              </button>
+
+              <img
                 className={styles.projectImage}
+                src={projectAirbnbImages[currentIndices.airbnb]}
               />
-              <img 
-                src={airbnb2}
-                alt="Airbnb Clone 2" 
-                className={styles.projectImage}
-              />
+
+              <button
+                className={`${styles.chevronBtn} ${styles.chevronRight}`}
+                onClick={() => nextImage("airbnb", projectAirbnbImages)}
+              >
+                <ChevronRight />
+              </button>
             </div>
             <div className={styles.projectContent}>
               <h3 className={styles.projectTitle}>Airbnb Clone - Room Booking</h3>
@@ -466,6 +517,14 @@ export default function App() {
         </div>
       </section>
 
+      {/* Footer */}
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <p className={styles.footerText}>
+            &copy; {new Date().getFullYear()} Khanh Nhu. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
