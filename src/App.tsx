@@ -72,6 +72,21 @@ export default function App() {
       ]
     },
     {
+      title: 'Libraries & Frameworks',
+      layout: 'two',
+      icon: Code2,
+      items: [
+        {
+          label: 'React',
+          iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'
+        },
+        {
+          label: 'Next.js',
+          iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg'
+        }
+      ]
+    },
+    {
       title: 'Tools & Platforms',
       layout: 'three',
       icon: Wrench,
@@ -132,11 +147,11 @@ export default function App() {
           iconName: 'BV'
         },
         {
-          label: 'State Transition',
+          label: 'State Transition Testing',
           iconName: 'ST'
         },
         {
-          label: 'Decision Table',
+          label: 'Decision Table Testing',
           iconName: 'DT'
         }
       ]
@@ -212,6 +227,7 @@ export default function App() {
       {/* About */}
       <section id="about" className={styles.about}>
         <div className={styles.container}>
+          <div className={styles.gradientOverlay} />
           <h2 className={styles.sectionTitle}>About Me</h2>
           <div className={styles.aboutContent}>
             <div className={styles.aboutText}>
@@ -289,17 +305,23 @@ export default function App() {
                 A food delivery system using a multi-database architecture.
               </p>
               <ul className={styles.projectBullets}>
-                <li>Designed test cases for core flows: cart, ordering, payment</li>
-                <li>Applied State Transition Testing for order states (placed to canceled)</li>
-                <li>Performed API testing and validated data consistency across multiple databases</li>
+                <li>Developed responsive components using React and styled with CSS Modules</li>
+                <li>Used React Query for efficient data fetching and caching</li>
+                <li>Designed and executed test cases using Equivalence Partitioning for core flows: cart, ordering</li>
+                <li>Applied data-driven testing with multiple user datasets</li>
+                <li>Applied state transition testing for order-delivery states (placed to canceled)</li>
                 <li>Applied data-driven testing with various input combinations</li>
                 <li>Identified and reported bugs related to order processing, data mismatch, and UI issues</li>
+                <li>Implemented multi-database architecture with PostgreSQL for relational and consistent data, MongoDB for flexible document storage, and Redis for caching in the backend</li>
               </ul>
               <div className={styles.projectTech}>
+                <span className={styles.techTag}>React</span>
                 <span className={styles.techTag}>PostgreSQL</span>
                 <span className={styles.techTag}>MongoDB</span>
                 <span className={styles.techTag}>Redis</span>
-                <span className={styles.techTag}>Neo4j</span>
+                <span className={styles.techTag}>Data-driven Testing</span>
+                <span className={styles.techTag}>Equivalence Partitioning</span>
+                <span className={styles.techTag}>State Transition Testing</span>
               </div>
               <a href="https://github.com/ponponl/MDM-food-delivery" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
                 <Github size={18} /> View Project
@@ -327,15 +349,19 @@ export default function App() {
                 A music streaming system with a recommendation module based on user interaction.
               </p>
               <ul className={styles.projectBullets}>
-                <li>Designed and executed test cases using Equivalence Partitioning and State Transition Testing</li>
+                <li>Implemented frontend components using React and styled with CSS Modules</li>
+                <li>Designed and executed test cases using Equivalence Partitioning in Authentication</li>
                 <li>Applied data-driven testing with multiple user datasets</li>
-                <li>Performed API testing (Postman) to validate recommendation logic and user tracking</li>
-                <li>Conducted exploratory testing to identify edge cases in personalized flows</li>
-                <li>Detected and reported bugs related to incorrect suggestions, data inconsistency, and UI behavior</li>
+                <li>Performed API testing (Postman) to validate data consistency</li>
+                <li>Conducted exploratory testing to identify edge cases in streaming functionality</li>
+                <li>Detected and reported bugs related to data inconsistency and UI behavior</li>
               </ul>
               <div className={styles.projectTech}>
+                <span className={styles.techTag}>React</span>
+                <span className={styles.techTag}>PostgreSQL</span>
+                <span className={styles.techTag}>Data-driven Testing</span>
+                <span className={styles.techTag}>Equivalence Partitioning</span>
                 <span className={styles.techTag}>API Testing</span>
-                <span className={styles.techTag}>Postman</span>
                 <span className={styles.techTag}>Exploratory Testing</span>
               </div>
               <a href="https://github.com/FlyingCat04/PSMusic" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
@@ -361,18 +387,21 @@ export default function App() {
             <div className={styles.projectContent}>
               <h3 className={styles.projectTitle}>Pluggable Recommendation System</h3>
               <p className={styles.projectDesc}>
-                A configurable recommendation tracking system.
+                A configurable and pluggable recommendation tracking system.
               </p>
               <ul className={styles.projectBullets}>
-                <li>Designed and executed test cases using Equivalence Partitioning and State Transition Testing</li>
+                <li>Implemented frontend components using React and styled with CSS Modules</li>
+                <li>Designed and executed test cases using Equivalence Partitioning in configuration flows</li>
                 <li>Applied data-driven testing with multiple user datasets</li>
                 <li>Performed API testing (Postman) to validate param and response</li>
-                <li>Conducted exploratory testing to identify edge cases in personalized flows</li>
                 <li>Detected and reported bugs related to data inconsistency, UI behavior</li>
               </ul>
               <div className={styles.projectTech}>
-                <span className={styles.techTag}>Postman</span>
+                <span className={styles.techTag}>React</span>
+                <span className={styles.techTag}>PostgreSQL</span>
+                <span className={styles.techTag}>Equivalence Partitioning</span>
                 <span className={styles.techTag}>Data-driven Testing</span>
+                <span className={styles.techTag}>API Testing</span>
               </div>
               <a href="https://github.com/Xaoimiimii/recsys-tracker-web-config" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
                 <Github size={18} /> View Project
@@ -400,15 +429,19 @@ export default function App() {
                 A web application simulating Airbnb with a room auction system.
               </p>
               <ul className={styles.projectBullets}>
-                <li>Designed and executed test cases for booking and auction flows with multiple user roles</li>
+                <li>Implemented frontend components using React and styled with CSS Modules</li>
+                <li>Designed and executed test cases using Equivalence Partitioning for booking and auction flows with multiple user roles</li>
                 <li>Applied State Transition Testing to validate auction lifecycle and booking states</li>
                 <li>Conducted exploratory testing to identify edge cases in bidding timing and concurrent actions</li>
-                <li>Performed API testing (Postman) for booking, authentication, and bidding processes</li>
                 <li>Detected and reported bugs related to UI inconsistencies, logic errors, and data synchronization</li>
               </ul>
               <div className={styles.projectTech}>
-                <span className={styles.techTag}>API Testing</span>
+                <span className={styles.techTag}>React</span>
+                <span className={styles.techTag}>PostgreSQL</span>
+                <span className={styles.techTag}>MongoDB</span>
+                <span className={styles.techTag}>Equivalence Partitioning</span>
                 <span className={styles.techTag}>State Transition Testing</span>
+                <span className={styles.techTag}>Exploratory Testing</span>
               </div>
               <a href="https://github.com/04nhatminh/rooms-auction-website" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
                 <Github size={18} /> View Project
@@ -425,8 +458,7 @@ export default function App() {
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Let's Work Together</h2>
           <p className={styles.contactText}>
-            I am currently open to new opportunities. Whether you have a question or just want to
-            say hi, I will try my best to get back to you!
+            I am currently open to new opportunities. Whether you have a question or just want to say hi, I will try my best to get back to you!
           </p>
           <a href="mailto:tkhanhnhu04@gmail.com" className={styles.contactLink}>
             <Mail size={20} /> tkhanhnhu04@gmail.com
