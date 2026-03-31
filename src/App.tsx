@@ -1,15 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { CheckCircle2, Bug, Wrench, Code2, Database, Mail, Github, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './App.module.css';
-import {
-  CheckCircle2,
-  Bug,
-  Wrench,
-  Code2,
-  Database,
-  Mail,
-  Github,
-  ArrowRight
-} from 'lucide-react';
 import cloudHero from './assets/cloudy_hero.mp4';
 import psmusic1 from './assets/psmusic_1.png';
 import psmusic2 from './assets/psmusic_2.png';
@@ -20,10 +11,35 @@ import reco2 from './assets/reco_2.png';
 import airbnb1 from './assets/airbnb_1.png';
 import airbnb2 from './assets/airbnb_2.png';
 
+const projectFoodlyImages = [foodly1, foodly2];
+const projectRecoImages = [reco1, reco2];
+const projectMusicImages = [psmusic1, psmusic2];
+const projectAirbnbImages = [airbnb1, airbnb2];
+
 export default function App() {
   const heroRef = useRef<HTMLElement | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
   const [isSticky, setIsSticky] = useState(false);
+  const [currentIndices, setCurrentIndices] = useState({
+    foodly: 0,
+    reco: 0,
+    music: 0,
+    airbnb: 0,
+  });
+
+  const prevImage = (project: keyof typeof currentIndices, images: string[]) => {
+    setCurrentIndices((prev) => ({
+      ...prev,
+      [project]: prev[project] === 0 ? images.length - 1 : prev[project] - 1,
+    }));
+  };
+
+  const nextImage = (project: keyof typeof currentIndices, images: string[]) => {
+    setCurrentIndices((prev) => ({
+      ...prev,
+      [project]: prev[project] === images.length - 1 ? 0 : prev[project] + 1,
+    }));
+  };
 
   useEffect(() => {
     const updateSticky = () => {
@@ -119,16 +135,12 @@ export default function App() {
     },
     {
       title: 'Software Testing',
-      layout: 'two',
+      layout: 'three',
       icon: CheckCircle2,
       items: [
         {
-          label: 'Test Case Design',
+          label: 'Test Analysis & Design',
           iconName: 'TC'
-        },
-        {
-          label: 'Test Checklist Design',
-          iconName: 'CL'
         },
         {
           label: 'Data-driven Testing',
@@ -149,10 +161,6 @@ export default function App() {
         {
           label: 'State Transition Testing',
           iconName: 'ST'
-        },
-        {
-          label: 'Decision Table Testing',
-          iconName: 'DT'
         }
       ]
     },
@@ -288,16 +296,13 @@ export default function App() {
           {/* Project 1 */}
           <div className={styles.projectCard}>
             <div className={styles.projectImagesRow}>
-              <img 
-                src={foodly1}
-                alt="Food Delivery System 1" 
-                className={styles.projectImage}
-              />
-              <img 
-                src={foodly2}
-                alt="Food Delivery System 2" 
-                className={styles.projectImage}
-              />
+            <button className={styles.chevronBtn} onClick={() => prevImage("foodly", projectFoodlyImages)}>
+                <ChevronLeft />
+            </button>
+            <img src={projectFoodlyImages[currentIndices.foodly]} />
+            <button className={styles.chevronBtn} ChevronRight onClick={() => nextImage("foodly", projectFoodlyImages)}>
+                <ChevronRight />
+            </button>
             </div>
             <div className={styles.projectContent}>
               <h3 className={styles.projectTitle}>Food Delivery System</h3>
@@ -308,20 +313,19 @@ export default function App() {
                 <li>Developed responsive components using React and styled with CSS Modules</li>
                 <li>Used React Query for efficient data fetching and caching</li>
                 <li>Designed and executed test cases using Equivalence Partitioning for core flows: cart, ordering</li>
-                <li>Applied data-driven testing with multiple user datasets</li>
-                <li>Applied state transition testing for order-delivery states (placed to canceled)</li>
-                <li>Applied data-driven testing with various input combinations</li>
+                <li>Applied data-driven testing with various input combinations (valid, invalid, boundary cases)</li>
+                <li>Applied State Transition Testing for order-delivery states (placed to canceled)</li>
                 <li>Identified and reported bugs related to order processing, data mismatch, and UI issues</li>
                 <li>Implemented multi-database architecture with PostgreSQL for relational and consistent data, MongoDB for flexible document storage, and Redis for caching in the backend</li>
               </ul>
               <div className={styles.projectTech}>
-                <span className={styles.techTag}>React</span>
-                <span className={styles.techTag}>PostgreSQL</span>
-                <span className={styles.techTag}>MongoDB</span>
-                <span className={styles.techTag}>Redis</span>
-                <span className={styles.techTag}>Data-driven Testing</span>
-                <span className={styles.techTag}>Equivalence Partitioning</span>
-                <span className={styles.techTag}>State Transition Testing</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#8884d8' }}>React</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#82ca9d' }}>PostgreSQL</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#ffc658' }}>MongoDB</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#8dd1e1' }}>Redis</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#ff7c7c' }}>Equivalence Partitioning</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#ffc658' }}>Data-driven Testing</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#a4de6c' }}>State Transition Testing</span>
               </div>
               <a href="https://github.com/ponponl/MDM-food-delivery" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
                 <Github size={18} /> View Project
@@ -352,17 +356,15 @@ export default function App() {
                 <li>Implemented frontend components using React and styled with CSS Modules</li>
                 <li>Designed and executed test cases using Equivalence Partitioning in Authentication</li>
                 <li>Applied data-driven testing with multiple user datasets</li>
-                <li>Performed API testing (Postman) to validate data consistency</li>
                 <li>Conducted exploratory testing to identify edge cases in streaming functionality</li>
                 <li>Detected and reported bugs related to data inconsistency and UI behavior</li>
               </ul>
               <div className={styles.projectTech}>
-                <span className={styles.techTag}>React</span>
-                <span className={styles.techTag}>PostgreSQL</span>
-                <span className={styles.techTag}>Data-driven Testing</span>
-                <span className={styles.techTag}>Equivalence Partitioning</span>
-                <span className={styles.techTag}>API Testing</span>
-                <span className={styles.techTag}>Exploratory Testing</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#8884d8' }}>React</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#82ca9d' }}>PostgreSQL</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#ffc658' }}>Data-driven Testing</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#ff7c7c' }}>Equivalence Partitioning</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#d084d0' }}>Exploratory Testing</span>
               </div>
               <a href="https://github.com/FlyingCat04/PSMusic" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
                 <Github size={18} /> View Project
@@ -393,15 +395,13 @@ export default function App() {
                 <li>Implemented frontend components using React and styled with CSS Modules</li>
                 <li>Designed and executed test cases using Equivalence Partitioning in configuration flows</li>
                 <li>Applied data-driven testing with multiple user datasets</li>
-                <li>Performed API testing (Postman) to validate param and response</li>
                 <li>Detected and reported bugs related to data inconsistency, UI behavior</li>
               </ul>
               <div className={styles.projectTech}>
-                <span className={styles.techTag}>React</span>
-                <span className={styles.techTag}>PostgreSQL</span>
-                <span className={styles.techTag}>Equivalence Partitioning</span>
-                <span className={styles.techTag}>Data-driven Testing</span>
-                <span className={styles.techTag}>API Testing</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#8884d8' }}>React</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#82ca9d' }}>PostgreSQL</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#ff7c7c' }}>Equivalence Partitioning</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#ffc658' }}>Data-driven Testing</span>
               </div>
               <a href="https://github.com/Xaoimiimii/recsys-tracker-web-config" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
                 <Github size={18} /> View Project
@@ -436,12 +436,12 @@ export default function App() {
                 <li>Detected and reported bugs related to UI inconsistencies, logic errors, and data synchronization</li>
               </ul>
               <div className={styles.projectTech}>
-                <span className={styles.techTag}>React</span>
-                <span className={styles.techTag}>PostgreSQL</span>
-                <span className={styles.techTag}>MongoDB</span>
-                <span className={styles.techTag}>Equivalence Partitioning</span>
-                <span className={styles.techTag}>State Transition Testing</span>
-                <span className={styles.techTag}>Exploratory Testing</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#8884d8' }}>React</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#82ca9d' }}>PostgreSQL</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#ffc658' }}>MongoDB</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#ff7c7c' }}>Equivalence Partitioning</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#a4de6c' }}>State Transition Testing</span>
+                <span className={styles.techTag} style={{ backgroundColor: '#d084d0' }}>Exploratory Testing</span>
               </div>
               <a href="https://github.com/04nhatminh/rooms-auction-website" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
                 <Github size={18} /> View Project
