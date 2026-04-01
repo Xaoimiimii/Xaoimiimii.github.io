@@ -224,7 +224,10 @@ export default function App() {
           className={`${styles.nav} ${isSticky ? styles.navSticky : ''}`}
           ref={navRef}
         >
-          <div className={styles.logo}> <Bird size={24} /> Khanh Nhu</div>
+          <div className={styles.logo}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <Bird size={24} /> Khanh Nhu</div>
           <div className={styles.navLinks}>
             <a href="#home" className={styles.navLink}>Home</a>
             <a href="#about" className={styles.navLink}>About</a>
@@ -253,12 +256,10 @@ export default function App() {
         <div className={styles.container}>
           <div className={styles.gradientOverlay} />
           <h2 className={styles.sectionTitle}>About Me</h2>
-          <div className={styles.aboutContent}>
-            <div className={styles.aboutText}>
-              <p>
-                I am an IT student preparing for graduation, with a strong interest in software testing, quality assurance, and frontend development. I enjoy logical problem-solving, test case design, and ensuring software reliability, while also building user-friendly interfaces and responsive web applications through structured development practices.
-              </p>
-            </div>
+          <div className={styles.contactContent}>
+            <p className={styles.contactText}>
+              I am an IT student preparing for graduation, with a strong interest in software testing, quality assurance, and frontend development. I enjoy logical problem-solving, test case design, and ensuring software reliability, while also building user-friendly interfaces and responsive web applications through structured development practices.
+            </p>
           </div>
         </div>
       </section>
@@ -319,10 +320,22 @@ export default function App() {
                 <ChevronLeft />
               </button>
 
-              <img
-                className={styles.projectImage}
-                src={projectFoodlyImages[currentIndices.foodly]}
-              />
+              <div className={styles.carouselViewport}>
+                <div
+                  className={styles.carouselTrack}
+                  style={{ transform: `translateX(-${currentIndices.foodly * 100}%)` }}
+                >
+                  {projectFoodlyImages.map((image, index) => (
+                    <img
+                      key={`${image}-${index}`}
+                      className={`${styles.projectImage} ${styles.carouselImage}`}
+                      src={image}
+                      alt="Food Delivery System preview"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              </div>
 
               <button
                 className={`${styles.chevronBtn} ${styles.chevronRight}`}
@@ -370,10 +383,22 @@ export default function App() {
                 <ChevronLeft />
               </button>
 
-              <img
-                className={styles.projectImage}
-                src={projectMusicImages[currentIndices.music]}
-              />
+              <div className={styles.carouselViewport}>
+                <div
+                  className={styles.carouselTrack}
+                  style={{ transform: `translateX(-${currentIndices.music * 100}%)` }}
+                >
+                  {projectMusicImages.map((image, index) => (
+                    <img
+                      key={`${image}-${index}`}
+                      className={`${styles.projectImage} ${styles.carouselImage}`}
+                      src={image}
+                      alt="Music Streaming preview"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              </div>
 
               <button
                 className={`${styles.chevronBtn} ${styles.chevronRight}`}
@@ -417,10 +442,22 @@ export default function App() {
                 <ChevronLeft />
               </button>
 
-              <img
-                className={styles.projectImage}
-                src={projectRecoImages[currentIndices.reco]}
-              />
+              <div className={styles.carouselViewport}>
+                <div
+                  className={styles.carouselTrack}
+                  style={{ transform: `translateX(-${currentIndices.reco * 100}%)` }}
+                >
+                  {projectRecoImages.map((image, index) => (
+                    <img
+                      key={`${image}-${index}`}
+                      className={`${styles.projectImage} ${styles.carouselImage}`}
+                      src={image}
+                      alt="Recommendation System preview"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              </div>
 
               <button
                 className={`${styles.chevronBtn} ${styles.chevronRight}`}
@@ -462,10 +499,22 @@ export default function App() {
                 <ChevronLeft />
               </button>
 
-              <img
-                className={styles.projectImage}
-                src={projectAirbnbImages[currentIndices.airbnb]}
-              />
+              <div className={styles.carouselViewport}>
+                <div
+                  className={styles.carouselTrack}
+                  style={{ transform: `translateX(-${currentIndices.airbnb * 100}%)` }}
+                >
+                  {projectAirbnbImages.map((image, index) => (
+                    <img
+                      key={`${image}-${index}`}
+                      className={`${styles.projectImage} ${styles.carouselImage}`}
+                      src={image}
+                      alt="Airbnb Clone preview"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              </div>
 
               <button
                 className={`${styles.chevronBtn} ${styles.chevronRight}`}
